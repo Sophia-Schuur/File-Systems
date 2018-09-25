@@ -1,0 +1,211 @@
+enter main
+&argc=ff9c0f40 argv=ff9c0fd4 env=ff9c0fdc
+&a=ff9c0ef4 &b=ff9c0ef8 &c=ff9c0efc
+
+(Part 1.1). Write C code to print values of argc and argv[] entries
+   Argc value: 1
+   Argv Values: 
+
+(Part 2 & 3). Use your myprintf() to print argc, argv and env values
+
+ testing: cha=A string=this is a test      dec=100 hex=0x100 oct=0100 neg=-100
+
+   Argc Value: 1
+   Argv Values:
+   Env[0]: CLUTTER_IM_MODULE=xim
+   Env[1]: LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+   Env[2]: LESSCLOSE=/usr/bin/lesspipe %s %s
+   Env[3]: XDG_MENU_PREFIX=gnome-
+   Env[4]: LANG=en_US.UTF-8
+   Env[5]: DISPLAY=:0.0
+   Env[6]: GNOME_SHELL_SESSION_MODE=ubuntu
+   Env[7]: COLORTERM=truecolor
+   Env[8]: USERNAME=sophia
+   Env[9]: XDG_VTNR=1
+   Env[10]: SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+   Env[11]: XDG_SESSION_ID=1
+   Env[12]: USER=sophia
+   Env[13]: DESKTOP_SESSION=ubuntu
+   Env[14]: QT4_IM_MODULE=xim
+   Env[15]: TEXTDOMAINDIR=/usr/share/locale/
+   Env[16]: WAYLAND_DISPLAY=wayland-0
+   Env[17]: PWD=/home/sophia/Desktop/Homework1-360
+   Env[18]: HOME=/home/sophia
+   Env[19]: JOURNAL_STREAM=9:18736
+   Env[20]: TEXTDOMAIN=im-config
+   Env[21]: XDG_SESSION_TYPE=wayland
+   Env[22]: XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+   Env[23]: XDG_SESSION_DESKTOP=ubuntu
+   Env[24]: TERM=xterm-256color
+   Env[25]: SHELL=/bin/bash
+   Env[26]: VTE_VERSION=4804
+   Env[27]: QT_IM_MODULE=xim
+   Env[28]: XMODIFIERS=@im=ibus
+   Env[29]: IM_CONFIG_PHASE=2
+   Env[30]: XDG_CURRENT_DESKTOP=ubuntu:GNOME
+   Env[31]: XDG_SEAT=seat0
+   Env[32]: SHLVL=2
+   Env[33]: WINDOWID=41956110
+   Env[34]: GDMSESSION=ubuntu
+   Env[35]: GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+   Env[36]: LOGNAME=sophia
+   Env[37]: DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+   Env[38]: XDG_RUNTIME_DIR=/run/user/1000
+   Env[39]: XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+   Env[40]: PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+   Env[41]: SESSION_MANAGER=local/sophia-VirtualBox:@/tmp/.ICE-unix/823,unix/sophia-VirtualBox:/tmp/.ICE-unix/823
+   Env[42]: LESSOPEN=| /usr/bin/lesspipe %s
+   Env[43]: GTK_IM_MODULE=ibus
+   Env[44]: OLDPWD=/home/sophia/Desktop
+   Env[45]: _=./a.out
+
+  enter A
+   Address of d: ff9c0eb0
+   Address of e: ff9c0eb4
+   Address of f: ff9c0eb8
+  enter B
+   Address of g: ff9c0e80
+   Address of h: ff9c0e84
+   Address of i: ff9c0e88
+  enter C
+   Address of u: ff9c0e44
+   Address of v: ff9c0e48
+   Address of w: ff9c0e4c
+   Address of i: ff9c0e50
+   Address of p: 565c01f1
+
+(Part 1.2). Write C code to print the stack frame link list
+   ff9c0e68 -> ff9c0e98 -> ff9c0ec8 -> ff9c0f28 -> 0
+
+(Part 1.3). Print the stack contents from p to the frame of main()
+   Entry: 1 | Stack Address: 0xff9c0e10  | Stack Value: f7ec8d80
+   Entry: 2 | Stack Address: 0xff9c0e14  | Stack Value: 565c030b
+   Entry: 3 | Stack Address: 0xff9c0e18  | Stack Value: ff9c0e34
+   Entry: 4 | Stack Address: 0xff9c0e1c  | Stack Value: 565c1fcc
+   Entry: 5 | Stack Address: 0xff9c0e20  | Stack Value: ff9c0f40
+   Entry: 6 | Stack Address: 0xff9c0e24  | Stack Value: f7ec8000
+   Entry: 7 | Stack Address: 0xff9c0e28  | Stack Value: f7d49595
+   Entry: 8 | Stack Address: 0xff9c0e2c  | Stack Value: 565bfe64
+   Entry: 9 | Stack Address: 0xff9c0e30  | Stack Value: 565c030b
+   Entry: 10 | Stack Address: 0xff9c0e34  | Stack Value: ff9c0e34
+   Entry: 11 | Stack Address: 0xff9c0e38  | Stack Value: f7d413eb
+   Entry: 12 | Stack Address: 0xff9c0e3c  | Stack Value: 565bfd92
+   Entry: 13 | Stack Address: 0xff9c0e40  | Stack Value: ff9c0f40
+   Entry: 14 | Stack Address: 0xff9c0e44  | Stack Value: a
+   Entry: 15 | Stack Address: 0xff9c0e48  | Stack Value: b
+   Entry: 16 | Stack Address: 0xff9c0e4c  | Stack Value: c
+   Entry: 17 | Stack Address: 0xff9c0e50  | Stack Value: 10
+   Entry: 18 | Stack Address: 0xff9c0e54  | Stack Value: ff9c0e10
+   Entry: 19 | Stack Address: 0xff9c0e58  | Stack Value: 14
+   Entry: 20 | Stack Address: 0xff9c0e5c  | Stack Value: c09f2a00
+   Entry: 21 | Stack Address: 0xff9c0e60  | Stack Value: ff9c0f40
+   Entry: 22 | Stack Address: 0xff9c0e64  | Stack Value: 565c1fcc
+   Entry: 23 | Stack Address: 0xff9c0e68  | Stack Value: ff9c0e98
+   Entry: 24 | Stack Address: 0xff9c0e6c  | Stack Value: 565bfca9
+   Entry: 25 | Stack Address: 0xff9c0e70  | Stack Value: 7
+   Entry: 26 | Stack Address: 0xff9c0e74  | Stack Value: 8
+   Entry: 27 | Stack Address: 0xff9c0e78  | Stack Value: ff9c0ec8
+   Entry: 28 | Stack Address: 0xff9c0e7c  | Stack Value: 565bfc1f
+   Entry: 29 | Stack Address: 0xff9c0e80  | Stack Value: 7
+   Entry: 30 | Stack Address: 0xff9c0e84  | Stack Value: 8
+   Entry: 31 | Stack Address: 0xff9c0e88  | Stack Value: 9
+   Entry: 32 | Stack Address: 0xff9c0e8c  | Stack Value: c09f2a00
+   Entry: 33 | Stack Address: 0xff9c0e90  | Stack Value: ff9c0f40
+   Entry: 34 | Stack Address: 0xff9c0e94  | Stack Value: 565c1fcc
+   Entry: 35 | Stack Address: 0xff9c0e98  | Stack Value: ff9c0ec8
+   Entry: 36 | Stack Address: 0xff9c0e9c  | Stack Value: 565bfbe7
+   Entry: 37 | Stack Address: 0xff9c0ea0  | Stack Value: 4
+   Entry: 38 | Stack Address: 0xff9c0ea4  | Stack Value: 5
+   Entry: 39 | Stack Address: 0xff9c0ea8  | Stack Value: 7d4
+   Entry: 40 | Stack Address: 0xff9c0eac  | Stack Value: 565bfb5d
+   Entry: 41 | Stack Address: 0xff9c0eb0  | Stack Value: 4
+   Entry: 42 | Stack Address: 0xff9c0eb4  | Stack Value: 5
+   Entry: 43 | Stack Address: 0xff9c0eb8  | Stack Value: 6
+   Entry: 44 | Stack Address: 0xff9c0ebc  | Stack Value: c09f2a00
+   Entry: 45 | Stack Address: 0xff9c0ec0  | Stack Value: ff9c0f40
+   Entry: 46 | Stack Address: 0xff9c0ec4  | Stack Value: 565c1fcc
+   Entry: 47 | Stack Address: 0xff9c0ec8  | Stack Value: ff9c0f28
+   Entry: 48 | Stack Address: 0xff9c0ecc  | Stack Value: 565bf7dc
+   Entry: 49 | Stack Address: 0xff9c0ed0  | Stack Value: 1
+   Entry: 50 | Stack Address: 0xff9c0ed4  | Stack Value: 2
+   Entry: 51 | Stack Address: 0xff9c0ed8  | Stack Value: ff9c1fe6
+   Entry: 52 | Stack Address: 0xff9c0edc  | Stack Value: ff9c0efc
+   Entry: 53 | Stack Address: 0xff9c0ee0  | Stack Value: f7f0da00
+   Entry: 54 | Stack Address: 0xff9c0ee4  | Stack Value: f7ec8000
+   Entry: 55 | Stack Address: 0xff9c0ee8  | Stack Value: ff9c0fdc
+   Entry: 56 | Stack Address: 0xff9c0eec  | Stack Value: ff9c0fd4
+   Entry: 57 | Stack Address: 0xff9c0ef0  | Stack Value: f7ec8000
+   Entry: 58 | Stack Address: 0xff9c0ef4  | Stack Value: 1
+   Entry: 59 | Stack Address: 0xff9c0ef8  | Stack Value: 2
+   Entry: 60 | Stack Address: 0xff9c0efc  | Stack Value: 3
+   Entry: 61 | Stack Address: 0xff9c0f00  | Stack Value: 1
+   Entry: 62 | Stack Address: 0xff9c0f04  | Stack Value: 1
+   Entry: 63 | Stack Address: 0xff9c0f08  | Stack Value: 2e
+   Entry: 64 | Stack Address: 0xff9c0f0c  | Stack Value: c09f2a00
+   Entry: 65 | Stack Address: 0xff9c0f10  | Stack Value: 1
+   Entry: 66 | Stack Address: 0xff9c0f14  | Stack Value: ff9c0fd4
+   Entry: 67 | Stack Address: 0xff9c0f18  | Stack Value: ff9c0fdc
+   Entry: 68 | Stack Address: 0xff9c0f1c  | Stack Value: ff9c0f40
+   Entry: 69 | Stack Address: 0xff9c0f20  | Stack Value: 0
+   Entry: 70 | Stack Address: 0xff9c0f24  | Stack Value: 1
+   Entry: 71 | Stack Address: 0xff9c0f28  | Stack Value: 0
+   Entry: 72 | Stack Address: 0xff9c0f2c  | Stack Value: f7d11986
+   Entry: 73 | Stack Address: 0xff9c0f30  | Stack Value: 1
+   Entry: 74 | Stack Address: 0xff9c0f34  | Stack Value: f7ec8000
+   Entry: 75 | Stack Address: 0xff9c0f38  | Stack Value: 0
+   Entry: 76 | Stack Address: 0xff9c0f3c  | Stack Value: f7d11986
+   Entry: 77 | Stack Address: 0xff9c0f40  | Stack Value: 1
+   Entry: 78 | Stack Address: 0xff9c0f44  | Stack Value: ff9c0fd4
+   Entry: 79 | Stack Address: 0xff9c0f48  | Stack Value: ff9c0fdc
+   Entry: 80 | Stack Address: 0xff9c0f4c  | Stack Value: 0
+   Entry: 81 | Stack Address: 0xff9c0f50  | Stack Value: 0
+   Entry: 82 | Stack Address: 0xff9c0f54  | Stack Value: 0
+   Entry: 83 | Stack Address: 0xff9c0f58  | Stack Value: f7ec8000
+   Entry: 84 | Stack Address: 0xff9c0f5c  | Stack Value: f7f0ec0c
+   Entry: 85 | Stack Address: 0xff9c0f60  | Stack Value: 1
+   Entry: 86 | Stack Address: 0xff9c0f64  | Stack Value: 0
+   Entry: 87 | Stack Address: 0xff9c0f68  | Stack Value: 1
+   Entry: 88 | Stack Address: 0xff9c0f6c  | Stack Value: f7ec8000
+   Entry: 89 | Stack Address: 0xff9c0f70  | Stack Value: 0
+   Entry: 90 | Stack Address: 0xff9c0f74  | Stack Value: 6f8545d5
+   Entry: 91 | Stack Address: 0xff9c0f78  | Stack Value: f5a949c5
+   Entry: 92 | Stack Address: 0xff9c0f7c  | Stack Value: 0
+   Entry: 93 | Stack Address: 0xff9c0f80  | Stack Value: 0
+   Entry: 94 | Stack Address: 0xff9c0f84  | Stack Value: 0
+   Entry: 95 | Stack Address: 0xff9c0f88  | Stack Value: ff9c0fd0
+   Entry: 96 | Stack Address: 0xff9c0f8c  | Stack Value: f7ee8000
+   Entry: 97 | Stack Address: 0xff9c0f90  | Stack Value: f7ee82ec
+   Entry: 98 | Stack Address: 0xff9c0f94  | Stack Value: 1
+   Entry: 99 | Stack Address: 0xff9c0f98  | Stack Value: f7d11899
+   Entry: 100 | Stack Address: 0xff9c0f9c  | Stack Value: 565c1fcc
+   Entry: 101 | Stack Address: 0xff9c0fa0  | Stack Value: 1
+   Entry: 102 | Stack Address: 0xff9c0fa4  | Stack Value: 565bf4a0
+   Entry: 103 | Stack Address: 0xff9c0fa8  | Stack Value: 0
+   Entry: 104 | Stack Address: 0xff9c0fac  | Stack Value: 565bf4d1
+   Entry: 105 | Stack Address: 0xff9c0fb0  | Stack Value: 565bf5dd
+   Entry: 106 | Stack Address: 0xff9c0fb4  | Stack Value: 1
+   Entry: 107 | Stack Address: 0xff9c0fb8  | Stack Value: ff9c0fd4
+   Entry: 108 | Stack Address: 0xff9c0fbc  | Stack Value: 565bfed0
+   Entry: 109 | Stack Address: 0xff9c0fc0  | Stack Value: 565bff30
+   Entry: 110 | Stack Address: 0xff9c0fc4  | Stack Value: f7ef7e10
+   Entry: 111 | Stack Address: 0xff9c0fc8  | Stack Value: ff9c0fcc
+   Entry: 112 | Stack Address: 0xff9c0fcc  | Stack Value: f7f0e920
+   Entry: 113 | Stack Address: 0xff9c0fd0  | Stack Value: 1
+   Entry: 114 | Stack Address: 0xff9c0fd4  | Stack Value: ff9c152e
+   Entry: 115 | Stack Address: 0xff9c0fd8  | Stack Value: 0
+   Entry: 116 | Stack Address: 0xff9c0fdc  | Stack Value: ff9c1536
+   Entry: 117 | Stack Address: 0xff9c0fe0  | Stack Value: ff9c154c
+   Entry: 118 | Stack Address: 0xff9c0fe4  | Stack Value: ff9c1b08
+   Entry: 119 | Stack Address: 0xff9c0fe8  | Stack Value: ff9c1b2a
+   Entry: 120 | Stack Address: 0xff9c0fec  | Stack Value: ff9c1b41
+   Entry: 121 | Stack Address: 0xff9c0ff0  | Stack Value: ff9c1b52
+   Entry: 122 | Stack Address: 0xff9c0ff4  | Stack Value: ff9c1b5f
+   Entry: 123 | Stack Address: 0xff9c0ff8  | Stack Value: ff9c1b7f
+   Entry: 124 | Stack Address: 0xff9c0ffc  | Stack Value: ff9c1b93
+   Entry: 125 | Stack Address: 0xff9c1000  | Stack Value: ff9c1ba3
+   Entry: 126 | Stack Address: 0xff9c1004  | Stack Value: ff9c1bae
+   Entry: 127 | Stack Address: 0xff9c1008  | Stack Value: ff9c1bd7
+   Entry: 128 | Stack Address: 0xff9c100c  | Stack Value: ff9c1be8
+ exit B
+ exit A
+exit main
