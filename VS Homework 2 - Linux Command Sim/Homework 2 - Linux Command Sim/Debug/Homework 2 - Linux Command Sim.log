@@ -1,0 +1,40 @@
+﻿  FileSystemFunctions.c
+c:\users\sophie\documents\visual studio 2017\fall 2018\cpts 360\homework 2 - linux command sim\homework 2 - linux command sim\filesystemfunctions.c(148): warning C4047: '==': 'char *' differs in levels of indirection from 'int'
+c:\users\sophie\documents\visual studio 2017\fall 2018\cpts 360\homework 2 - linux command sim\homework 2 - linux command sim\filesystemfunctions.c(152): warning C4047: '==': 'char *' differs in levels of indirection from 'int'
+c:\users\sophie\documents\visual studio 2017\fall 2018\cpts 360\homework 2 - linux command sim\homework 2 - linux command sim\filesystemfunctions.c(270): warning C4047: 'function': 'char *' differs in levels of indirection from 'char'
+c:\users\sophie\documents\visual studio 2017\fall 2018\cpts 360\homework 2 - linux command sim\homework 2 - linux command sim\filesystemfunctions.c(270): warning C4024: 'NewNode': different types for formal and actual parameter 1
+c:\users\sophie\documents\visual studio 2017\fall 2018\cpts 360\homework 2 - linux command sim\homework 2 - linux command sim\filesystemfunctions.c(321): warning C4047: 'function': 'char' differs in levels of indirection from 'void *'
+c:\users\sophie\documents\visual studio 2017\fall 2018\cpts 360\homework 2 - linux command sim\homework 2 - linux command sim\filesystemfunctions.c(321): warning C4024: 'Search': different types for formal and actual parameter 2
+c:\users\sophie\documents\visual studio 2017\fall 2018\cpts 360\homework 2 - linux command sim\homework 2 - linux command sim\filesystemfunctions.c(239): warning C4715: 'Search': not all control paths return a value
+c:\users\sophie\documents\visual studio 2017\fall 2018\cpts 360\homework 2 - linux command sim\homework 2 - linux command sim\filesystemfunctions.c(359): warning C4715: 'removeCheckFileType': not all control paths return a value
+c:\users\sophie\documents\visual studio 2017\fall 2018\cpts 360\homework 2 - linux command sim\homework 2 - linux command sim\filesystemfunctions.c(575): warning C4172: returning address of local variable or temporary: string1
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
+main.obj : warning LNK4006: _CommandSwitch already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _CopyStringCleanup already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _FileGetString already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _NewNode already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _PathnameToDirBasename already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _Search already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _cdFunction already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _checkAbsoluteRelative already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _creatFunction already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _displayMenu already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _findCmd already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _initialize already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _lsFunction already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _mkdirFunction already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _pwdFunction already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _quit already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _reload already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _removeCheckFileType already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _rmFunction already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _rmdirFunction already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _save already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _setMain already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _root already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _cwd already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _start already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _run already defined in FileSystemFunctions.obj; second definition ignored
+main.obj : warning LNK4006: _cmdTable already defined in FileSystemFunctions.obj; second definition ignored
+C:\Users\Sophie\Documents\Visual Studio 2017\Fall 2018\CptS 360\Homework 2 - Linux Command Sim\Debug\Homework 2 - Linux Command Sim.exe : warning LNK4088: image being generated due to /FORCE option; image may not run
+  Homework 2 - Linux Command Sim.vcxproj -> C:\Users\Sophie\Documents\Visual Studio 2017\Fall 2018\CptS 360\Homework 2 - Linux Command Sim\Debug\Homework 2 - Linux Command Sim.exe
