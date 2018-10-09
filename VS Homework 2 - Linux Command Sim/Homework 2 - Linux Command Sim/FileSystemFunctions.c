@@ -43,6 +43,12 @@ void setMain()
 	strcpy(line, "");
 	strcpy(command, "");
 	strcpy(pathname, "");
+	bname[0] = '\0';
+	dname[0] = '\0';
+	pathname[0] = '\0';
+	command[0] = '\0';
+	line[0] = '\0';
+	
 
 	//Get user input
 	printf("\n\nEnter command: ");
@@ -55,13 +61,13 @@ void setMain()
 void displayMenu()
 {
 	printf("\n***********Commands available***********\n");
-	printf("  mkdir pathname:		make a new directory\n");
-	printf("  rmdir pathname:		remove directory if empty\n");
-	printf("  cd [pathname]:		change CWD to pathname, or to / if no pathname\n");
-	printf("  ls [pathname]:	 	list directory contents (pathname or CWD)\n");
+	printf("  mkdir [pathname]:		make a new directory. Try entering 'mkdir Hello'!\n");
+	printf("  rmdir [pathname]:		remove directory if empty\n");
+	printf("  cd [pathname]:		change CWD to pathname, or to root if 'cd %c' entered.\n", 92);
+	printf("  ls:	 			list current directory contents\n");
 	printf("  pwd:				print (absolute) pathname of CWD\n");
-	printf("  creat pathname:		create a FILE node\n");
-	printf("  rm pathname:			remove a FILE node\n");
+	printf("  creat [pathname]:		create a FILE node\n");
+	printf("  rm [pathname]:		remove a FILE node\n");
 	printf("  save:	 			save the current file system tree to outfile.txt, then terminate\n");
 	printf("  reload:			construct file system tree from outfile.txt\n");
 	printf("  quit:				terminate program\n");
@@ -191,7 +197,7 @@ int checkAbsoluteRelative()
 //makes sure all elements in a given absolute pathname exist
 int Search(char * DirectoryPathName, char checkFileType)
 {
-
+	Node * last = start;
 	//get to parent node where directory is supposed to be placed.
 		//if i write mkdir /A/B/C, it will set start to B (i.e. C's parent).
 	while (DirectoryPathName)
@@ -200,6 +206,7 @@ int Search(char * DirectoryPathName, char checkFileType)
 		if (start == NULL)
 		{
 			printf("ERROR: %s Directory does not exist", DirectoryPathName);
+			start = last;
 			//return a 1 if it doesnt exist 
 			return 1;
 		}
@@ -239,13 +246,17 @@ int Search(char * DirectoryPathName, char checkFileType)
 //make a new directory
 void mkdirFunction(char checkFileType)
 {
+	char *DirectoryPathName = NULL;
 	//set the directory name and basename
-	PathnameToDirBasename();
 	checkAbsoluteRelative();
+	PathnameToDirBasename();
+	
 
 	//gets rid of the first slash in the dname and sets DirectoryPathName
-	char *DirectoryPathName = strtok(dname, "/");
-
+	//if (pathname[0] == '/') //absolute
+	//{
+		DirectoryPathName = strtok(dname, "/");
+	//}
 	//if a directory of an absolute pathname does not exist, exit the function
 	int checkExist = Search(DirectoryPathName, checkFileType);
 	if (checkExist == 1)
@@ -360,29 +371,48 @@ int removeCheckFileType(char checkFileType, Node * node)
 void rmdirFunction(char checkFileType)
 {
 	int check = 0, checkExist = 0;
-	char *DirectoryPathName = NULL;
+	//set the directory name and basename
 	PathnameToDirBasename();
-	check = checkAbsoluteRelative();
+	checkAbsoluteRelative();
 
-	if (check == 0)
-	{
-		if (strcmp(dname, "") == 0)
-		{
-			DirectoryPathName = strtok(dname, "/");
-			//DirectoryPathName = bname;
-			//strcpy(DirectoryPathName, bname);
-		}
-		else if (dname != NULL)
-		{
-			DirectoryPathName = strtok(pathname, "/");
-		}
-		//if a directory of an absolute pathname does not exist, exit the function
-		if ((start->name, DirectoryPathName) == "/")
-		{
-			int checkExist = Search(DirectoryPathName, checkFileType);
-			if (checkExist == 1)
-				return;
-		}
+	//gets rid of the first slash in the dname and sets DirectoryPathName
+	char *DirectoryPathName = strtok(dname, "/");
+
+	//if a directory of an absolute pathname does not exist, exit the function
+	/*if ((start->name, dname[0]) == "/")
+	{*/
+		checkExist = Search(DirectoryPathName, checkFileType);
+		if (checkExist == 1)
+			return;
+
+		/*checkExist = Search(DirectoryPathName, checkFileType);
+		if (checkExist == 1)
+			return;*/
+	//}
+
+	//char *DirectoryPathName = NULL;
+	//PathnameToDirBasename();
+	//check = checkAbsoluteRelative();
+
+	//if (check == 0)
+	//{
+	//	if (strcmp(dname, "") == 0)
+	//	{
+	//		DirectoryPathName = strtok(dname, "/");
+	//		//DirectoryPathName = bname;
+	//		//strcpy(DirectoryPathName, bname);
+	//	}
+	//	else if (dname != NULL)
+	//	{
+	//		DirectoryPathName = strtok(pathname, "/");
+	//	}
+	//	//if a directory of an absolute pathname does not exist, exit the function
+	//	/*if ((start->name, DirectoryPathName) == "/")
+	//	{*/
+	//		int checkExist = Search(DirectoryPathName, checkFileType);
+	//		if (checkExist == 1)
+	//			return;
+	//	//}
 
 		//check if node exists in start's child's list of siblings
 		Node *temp = start->childPtr;
@@ -476,7 +506,7 @@ void rmdirFunction(char checkFileType)
 				start = last;
 			}
 		}
-	}
+	//}
 }
 
 //remove a file
