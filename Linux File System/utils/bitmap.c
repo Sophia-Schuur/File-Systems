@@ -14,17 +14,15 @@ extern int block_bitmap, inode_bitmap, nblocks, ninodes;
 
 //8 bits in a byte
 //test whether or not a bit at buf[byte] is 1 or 0
-int test_bit(char *buf, int bit)
+int test_bit(char* buf, int bit)
 {
-	//convert bits to byte
-	int byte = bit / 8;
-	bit = bit % 8;
-	
-	if (buf[byte] & (1 << bit))
-	{
-		return 1;
-	}
-	return 0;
+    int byte = bit / 8; 
+    bit %= 8;
+
+    if (buf[byte] & (1 << bit))
+        return 1;
+    else
+        return 0;
 }
 
 //set a bit at buf[byte] to 1
@@ -129,9 +127,9 @@ int allocate_block(int dev)
 
 			put_block(dev, block_bitmap, buf);		//write buf data to block bitmap
 
-			clear_block(dev, i);
+			clear_block(dev, i + 1);
 
-			return i;	//return index of this block (which is in i)
+			return i + 1;	//return index of this block (which is in i)
 		}
 	}
 	set_error("No more free blocks");
@@ -194,7 +192,7 @@ int deallocate_block(int dev, int block)
 		return -1;
 	}
 
-	clear_bit(buf, block);	//set block bit to 0 (empty)
+	clear_bit(buf, block - 1);	//set block bit to 0 (empty)
 	incFreeBlocks(dev);	//increment a free block as it is now empty
 
 	put_block(dev, block_bitmap, buf);	//write back cleared buf bits to block bitmap
@@ -221,7 +219,7 @@ int deallocate_inode(int dev, int ino)
 	}
 
 	get_block(dev, inode_bitmap, buf);	//load block bitmap into buf, check for error
-	clear_bit(buf, ino);	//set ino bit to 0 (empty)
+	clear_bit(buf, ino - 1);	//set ino bit to 0 (empty)
 	incFreeInodes(dev);	//increment a free inode as it is now empty
 
 	put_block(dev, inode_bitmap, buf);	//write buf data to inode bitmap

@@ -22,7 +22,7 @@ int js_chmod(int argc, char *argv[])
 		return -1;
 	}
 
-	ino = get_inode_number(argv[1]);	//get inode number of filename
+	ino = get_inode_number(argv[2]);	//get inode number of filename
 	if(ino < 0)
 	{       
 		set_error("File does not exist"); 	
@@ -40,7 +40,7 @@ int js_chmod(int argc, char *argv[])
 
 	ip = &mip->ip;
 
-	new_mode = strtol(argv[2], NULL, 8);	//convert argv[2] to long int
+	new_mode = strtol(argv[1], NULL, 8);	//convert argv[1] to long int
 
 	ip->i_mode = (ip->i_mode & 0xF000) | new_mode;
 

@@ -9,8 +9,13 @@
 #include "../utils/error_manager.h"
 #include "../utils/readwrite.h"
 #include "../utils/search.h"
+#include "../utils/get_put_block.h"
 
 extern PROC *running;
+
+char global[BLOCK_SIZE];
+
+extern int debug;
 
 int js_cp(int argc, char *argv[])
 {
@@ -62,6 +67,9 @@ int js_cp(int argc, char *argv[])
 	}
 
 	src_mip = get_minode(dev, srcino);
+	debug = src_mip->ip.i_block[0];
+
+
 	dest_mip = get_minode(dev, destino);
 
 	srcfd = open_file(src_mip, READ);
@@ -85,6 +93,7 @@ int js_cp(int argc, char *argv[])
 	ofp->refCount--;
 	if(ofp->refCount == 0)
 	{
+		ofp->offset = 0;
 		put_minode(ofp->mptr);
 	}
 
@@ -94,6 +103,7 @@ int js_cp(int argc, char *argv[])
 	ofp->refCount--;
 	if(ofp->refCount == 0)
 	{
+		ofp->offset = 0;
 		put_minode(ofp->mptr);
 	}
 	

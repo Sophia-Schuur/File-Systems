@@ -14,6 +14,8 @@ extern OFT oft[NOFT];
 extern PROC *running;
 extern int nblocks;
 
+extern int debug;
+
 int duplicate_oft(MINODE *mip)
 {
 	int i;
@@ -223,7 +225,136 @@ int open_file(MINODE *mip, int mode)
 	return -1;
 }
 
+//NEWWW
 int mywrite(int fd, char *buf, int nbytes)
+{
+
+	char debugbuf[BLOCK_SIZE];
+
+	int dev;
+	int count = 0, remaining, logical_block, physical_block, double_block, start_byte;
+	int ind_index, double_index, blk;
+	int size;
+	char *src, *dest;
+	int *indirect, *double_indirect;
+	char local_buf[BLOCK_SIZE];
+	OFT *ofp;
+	char *cp, *buf_cp;
+	MINODE *mip;
+	INODE *ip;
+
+	ofp = running->fd[fd];
+	dev = ofp->mptr->dev;
+	mip = ofp->mptr;
+	ip = &ofp->mptr->ip;
+	buf_cp = buf;
+
+	while(nbytes)
+	{
+		logical_block = ofp->offset / BLOCK_SIZE;
+		start_byte = ofp->offset % BLOCK_SIZE;
+
+
+		//direct
+		if(logical_block < NUM_DIRECT_BLOCKS)
+		{
+			if(ip->i_block[logical_block] == 0)
+			{
+				mip->ip.i_block[logical_block] = allocate_block(mip->dev);
+			}
+			physical_block = ip->i_block[logical_block];
+		}
+		//indirect
+		else if(logical_block >= NUM_DIRECT_BLOCKS && 
+			logical_block < NUM_DIRECT_BLOCKS + BLOCK_NUMBERS_PER_BLOCK)
+		{
+
+			if(ip->i_block[INDIRECT_BLOCK_NUMBER] == 0)
+			{
+				mip->ip.i_block[logical_block] = allocate_block(mip->dev);
+			}
+			get_block(dev, ip->i_block[INDIRECT_BLOCK_NUMBER], local_buf);
+			indirect = (int *)local_buf;
+
+			if(indirect[logical_block - NUM_DIRECT_BLOCKS] == 0)
+			{
+				indirect[logical_block - NUM_DIRECT_BLOCKS] = allocate_block(mip->dev);
+				put_block(mip->dev, ip->i_block[INDIRECT_BLOCK_NUMBER], local_buf);
+			}
+
+			physical_block = indirect[logical_block - NUM_DIRECT_BLOCKS];
+		}
+		//double indirect
+		else
+		{
+			if(ip->i_block[DOUBLE_INDIRECT_BLOCK_NUMBER] == 0)
+			{
+				ip->i_block[DOUBLE_INDIRECT_BLOCK_NUMBER] = allocate_block(mip->dev);
+			}
+			double_index = (logical_block - (NUM_DIRECT_BLOCKS + BLOCK_NUMBERS_PER_BLOCK)) / BLOCK_NUMBERS_PER_BLOCK;
+			ind_index = (logical_block - (NUM_DIRECT_BLOCKS + BLOCK_NUMBERS_PER_BLOCK)) % BLOCK_NUMBERS_PER_BLOCK;
+
+			get_block(dev, ip->i_block[DOUBLE_INDIRECT_BLOCK_NUMBER], local_buf);
+			double_indirect = (int *)local_buf;
+
+			physical_block = double_indirect[double_index];
+
+			if(physical_block == 0)
+			{
+				double_indirect[double_index] = allocate_block(mip->dev);
+				physical_block = double_indirect[double_index];
+				put_block(mip->dev, ip->i_block[DOUBLE_INDIRECT_BLOCK_NUMBER], local_buf);
+			}
+
+			get_block(dev, physical_block, local_buf);
+			double_block = physical_block;
+
+			indirect = (int *)local_buf;
+
+			physical_block = indirect[ind_index];
+
+			if(physical_block == 0)
+			{
+				indirect[ind_index] = allocate_block(mip->dev);
+				physical_block = indirect[ind_index];
+				put_block(mip->dev, double_block, local_buf);
+			}
+		}
+
+		get_block(dev, physical_block, local_buf);
+
+		cp = local_buf + start_byte;
+		remaining = BLOCK_SIZE - start_byte;
+
+
+		if(remaining <= nbytes)
+		{
+			size = remaining;
+		}
+		else if(nbytes <= remaining)
+		{
+			size = nbytes;
+		}
+
+			
+
+		memcpy(cp, buf, size);
+		ofp->offset += size;
+		if(ofp->offset > ofp->mptr->ip.i_size)
+		{
+			mip->ip.i_size += size;
+		}
+		count += size;
+		nbytes -= size;
+		remaining -= size;
+		put_block(dev, physical_block, local_buf);
+	}
+	mip->dirty = TRUE;
+	return count;
+}
+
+//OOOLDLDLLD
+int mwrite(int fd, char *buf, int nbytes)
 {
 	int dev;
 	int count = 0, available, logical_block, physical_block, start_byte, ind_bno;

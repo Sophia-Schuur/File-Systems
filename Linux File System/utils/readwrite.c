@@ -1,4 +1,3 @@
-
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
@@ -20,13 +19,7 @@ extern OFT oft[NOFT];
 
 
 
-/*-----------------------------------------
-Function: get_minode
-Use: searches memory inodes, returns memory
-	 inode or loads inode from disk
-	 into memory if inode not found
-Throws errors?: -get_block
------------------------------------------*/
+
 MINODE *get_minode(int dev, int ino)
 {
 	MINODE *mip;
@@ -34,19 +27,16 @@ MINODE *get_minode(int dev, int ino)
 	char buf[BLOCK_SIZE];
 	int i, block, offset;
 
-	if(ino < ROOT_INODE)	// must be above root inode (2)
+	if(ino < ROOT_INODE)
 	{
 		return 0;
 	}
-	//load from memory
-	////refcount: number of times this inode has been referenced to 
-		//(sees if the file is active in case someone wanted to write to it while you were reading it and such)
-	
-	for(i = 0; i < NMINODE; i++)//while i < 64
-	{
-		mip = &minodes[i];	//set mip to address of minodes[i]
 
-		if(mip->dev == dev &&	//found inode
+	for(i = 0; i < NMINODE; i++)
+	{
+		mip = &minodes[i];
+
+		if(mip->dev == dev &&
 			mip->ino == ino)
 		{
 			mip->refCount++;
@@ -55,11 +45,10 @@ MINODE *get_minode(int dev, int ino)
 	
 	}
 
-	//load from disk
 	for(i = 0; i < NMINODE; i++)
 	{
-		mip = &minodes[i];	//set mip to address of minodes[i]
-		if(mip->refCount == 0)	//if this mip has not been referenced to before (not in memroy)
+		mip = &minodes[i];
+		if(mip->refCount == 0)
 		{
 			mip->dev = dev;
 			mip->ino = ino;
@@ -82,13 +71,6 @@ MINODE *get_minode(int dev, int ino)
 	return 0;
 }
 
-/*-----------------------------------------
-Function: put_minode
-Use: checks if mip is dirty/refCount < 0,
-	 if so writes mip information back to
-	 disk
-Throws errors?: -put_block
------------------------------------------*/
 int put_minode(MINODE *mip)
 {
 	if(!mip) 
@@ -123,14 +105,6 @@ int put_minode(MINODE *mip)
 	return 0;
 }
 
-/*-----------------------------------------
-Function: enter_dir_entry
-Use: enters a new directory entry into the
-	 file pointed at by 'parent_mip'
-Throws errors?: -put_block
-				-get_block
-				-allocate_inode
------------------------------------------*/
 int enter_dir_entry(MINODE *parent_mip, int inode_number, char *name)
 {
 	int i, ind_index, double_index, block_number, device = parent_mip->dev;
@@ -148,38 +122,37 @@ int enter_dir_entry(MINODE *parent_mip, int inode_number, char *name)
 			continue;
 		}
 
-		block_number = parent_ip->i_block[i];	//parent direct block number
+		block_number = parent_ip->i_block[i];
 
-		get_block(device, block_number, buf);	//get data from parent direct block number and put in buf
+		get_block(device, block_number, buf);
 
-		current_ptr = buf;	//bits at current_ptr are treated as if they made up a DIR struct. buf holds actual bits
-		dp = (DIR*)buf;		//access fields of record (directory) like name, length, etc
+		current_ptr = buf;
+		dp = (DIR*)buf;
 
 		while(current_ptr + dp->rec_len < buf + block_size)
 		{
-			current_ptr += dp->rec_len;	// advance current_ptr by rec_len in BYTEs
-			dp = (DIR *)current_ptr;	// pull dp along to the next record
+			current_ptr += dp->rec_len;
+			dp = (DIR *)current_ptr;
 		}
 
 		need_length = (4 * (( 8 + strlen(name) + 3) / 4));
 		ideal_last_entry = (4 * (( 8 + dp->name_len + 3) / 4));
 		remaining_length = dp->rec_len - ideal_last_entry;
 
-		if(remaining_length >= need_length)	//if there is enough space to write this dir entry
+		if(remaining_length >= need_length)
 		{
 			dp->rec_len = ideal_last_entry;
 
 			current_ptr += dp->rec_len;
 			dp = (DIR*)current_ptr;
 
-			//set new dir entry stuff
 			dp->inode = inode_number;
 			dp->rec_len = (block_size - (current_ptr - buf));
 			dp->name_len = strlen(name);
 			dp->file_type = EXT2_FT_DIR;
 			strcpy(dp->name, name);
 
-			put_block(device, block_number, buf);	//write buf data to parent direct block number
+			put_block(device, block_number, buf);
 			if(thrown_error == TRUE)
 			{
 				return -1;
@@ -290,39 +263,29 @@ int enter_dir_entry(MINODE *parent_mip, int inode_number, char *name)
 		}
 	}
 
-	//if not enough space we need to allocate new block
-	block_number = allocate_block(device);	//allocate new block and store index of first free one in block_number
-	if(thrown_error == TRUE)
-	{
-		return -1;
-	}
 
-	//set parent's new allocated block number so we can store the dir entry
+	block_number = allocate_block(device);
+
 	assign_first_empty_bno(parent_mip, block_number);
 	parent_ip->i_size += block_size;
-	parent_ip->i_blocks -= block_size / 512;
+	parent_ip->i_blocks += block_size / 512;
 	parent_mip->dirty = TRUE;
 
-	get_block(device, block_number, buf);//get data from block number and put in buf
+	get_block(device, block_number, buf);
 
 	current_ptr = buf;
 	dp = (DIR *)buf;
 
-	//set new dir entry stuff
 	dp->inode = inode_number;
 	dp->rec_len = block_size;
 	dp->name_len = strlen(name);
 	dp->file_type = EXT2_FT_DIR;
 	strcpy(dp->name, name);
 
-	put_block(device, block_number, buf);//write back buf to block_number
-	if(thrown_error == TRUE)
-	{
-		return -1;
-	}
+	put_block(device, block_number, buf);
+
 	return 0;
 }
-
 
 int remove_dir_entry(MINODE *parent_mip, char *name)
 {
@@ -487,16 +450,6 @@ int remove_dir_entry(MINODE *parent_mip, char *name)
 
 }
 
-
-/*-----------------------------------------
-Function: clear_blocks
-Use: searches every possible block in *mip
-	 and clears it, not very efficient, should
-	 use i_size to see how many blocks actually
-	 need to be changed
-Throws errors?: -put_block
-				-get_block
------------------------------------------*/
 //will also clear the data in each block literal
 int clear_blocks(MINODE *mip)
 {	
@@ -513,7 +466,6 @@ int clear_blocks(MINODE *mip)
 		{
 			continue;
 		}
-		printf("deallocating block: %d\n", mip->ip.i_block[indirect_sentinel]);
 		deallocate_block(device, mip->ip.i_block[indirect_sentinel]);
 		mip->ip.i_block[indirect_sentinel] = 0;
 	}
@@ -530,7 +482,6 @@ int clear_blocks(MINODE *mip)
 			{
 				continue;
 			}
-			printf("deallocating block: %d\n", mip->ip.i_block[indirect_sentinel]);
 			deallocate_block(device, indirect_block[indirect_sentinel]);
 		}
 		deallocate_block(device, mip->ip.i_block[INDIRECT_BLOCK_NUMBER]);
@@ -562,7 +513,6 @@ int clear_blocks(MINODE *mip)
 				{
 					continue;
 				}
-				printf("deallocating block: %d\n", mip->ip.i_block[double_indirect_sentinel]);
 				deallocate_block(device, indirect_block[double_indirect_sentinel]);
 			}
 
@@ -580,4 +530,3 @@ int clear_blocks(MINODE *mip)
 
 	return 0;
 }
-

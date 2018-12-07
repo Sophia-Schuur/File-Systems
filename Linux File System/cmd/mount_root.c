@@ -90,11 +90,11 @@ int mount_root(int dev)
 
   get_block(dev, block_bitmap, buf);
 
-  for (i=0; i < nblocks; i++){
-    (test_bit(buf, i)) ? putchar('1') : putchar('0');
-    if (i && (i % 8)==0)
-       printf(" ");
-  }
+  // for (i=0; i < nblocks; i++){
+  //   (test_bit(buf, i)) ? putchar('1') : putchar('0');
+  //   if (i && (i % 8)==0)
+  //      printf(" ");
+  // }
   printf("\n");
 
 	root = get_minode(dev, ROOT_INODE);

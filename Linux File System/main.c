@@ -6,6 +6,8 @@
 
 #include "cmd.h"
 
+int debug;
+
 PROC   proc[NPROC], *running;
 MINODE minodes[NMINODE], *root;
 OFT oft[NOFT];

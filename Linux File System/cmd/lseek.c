@@ -8,6 +8,7 @@ extern PROC *running;
 
 int js_lseek(int argc, char *argv[])
 {
+	//change read/write pointer of file descriptor
 	int fd, offset, original_pos;
 	OFT *ofp;
 
@@ -17,8 +18,9 @@ int js_lseek(int argc, char *argv[])
 		return -1;
 	}
 
-	fd = atoi(argv[1]);
-	offset = atoi(argv[2]);
+	//convert these strings to ints
+	fd = atoi(argv[1]);	//gonna just convert to 0
+	offset = atoi(argv[2]);	//convert offset to int
 
 	if(running->fd[fd] == NULL)
 	{
