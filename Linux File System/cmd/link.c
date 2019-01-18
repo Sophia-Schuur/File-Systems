@@ -14,7 +14,7 @@ extern PROC *running;
 
 int js_link(int argc, char *argv[])
 {
-	//ln just another name for an existing file.
+	//ln just another name for an existing file. Same inode
 	int old_inode, parent_inode, i, device = running->cwd->dev;
 	MINODE *old_mip, *parent_mip;
 
