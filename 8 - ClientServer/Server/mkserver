@@ -1,0 +1,4 @@
+echo compiling...
+gcc server.c -w
+echo compiling done.
+./a.out

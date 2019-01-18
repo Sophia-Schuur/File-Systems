@@ -1,0 +1,4 @@
+echo compiling...
+gcc client.c -w
+echo compiling done.
+./a.out
