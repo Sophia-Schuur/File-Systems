@@ -1,0 +1,5 @@
+echo compiling...
+gcc showblock.c -w
+echo done compiling!
+echo enter a file on a disk to search for. Try $"'./a.out diskimage /Z/hugefile.'"
+
