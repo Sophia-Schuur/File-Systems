@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 	{
 		do
 		{
-			printf("js_ext2fs %c : ", '%');
+			printf("Schuur EXT2FS %c : ", '%');
 			if(get_input(&input_line) < 0)
 			{
 				print_error();
