@@ -1,0 +1,5 @@
+echo compiling...
+gcc main.c myrcp.c
+echo compiling done.
+echo copies stuff.
+echo try something like "$./a.out dir1 dir2"
