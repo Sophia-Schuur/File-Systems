@@ -1,0 +1,6 @@
+echo compiling...
+gcc *.c cmd/*c utils/*.c -m32 -g -w
+echo done compiling!
+echo using "'disk'" by default. Use $./a.out "<diskname>" to use a different diskname.
+echo type $"'./a.out disk'" to start...
+
