@@ -1,4 +1,4 @@
-echo try these one at a time.
-echo for each file, compile each one separately using "$"gcc "<filename>" -w.
-echo then type $/a.out.
-echo for example try: "$"gcc gd.c -w";" $./a.out
+#!/bin/sh
+echo "$1"
+gcc $1 -w
+./a.out
