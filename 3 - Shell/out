@@ -1,0 +1,8 @@
+path[0] = /usr/local/sbin
+path[1] = /usr/local/bin
+path[2] = /usr/sbin
+path[3] = /usr/bin
+path[4] = /sbin
+path[5] = /bin
+print anything 
+helo
