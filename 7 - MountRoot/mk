@@ -1,0 +1,10 @@
+#!/bin/sh
+echo compiling...
+
+gcc mount_root.c -w
+
+echo compiling done.
+echo "Using $1"
+./a.out $1
+
+
