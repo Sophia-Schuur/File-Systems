@@ -7,4 +7,4 @@ If not given an `<image>`, will use `disk` by default.
 
 #### Known Bugs:
 * Cannot `cat` more than once. Offset issue maybe..?
-* `mkdir` gets weird when removing deeper filesystem trees and non-empty ones.
+* `rmdir` gets weird when removing deeper filesystem trees and non-empty ones.
